@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /root/deploy
+    overwrite: yes
+file_exists_behavior: OVERWRITE
+permissions:
+  - object: /root/deploy
+    owner: root
+    group: root
+    mode: 755
+hooks:
+  AfterInstall:
+    - location: deploy.sh
+      timeout: 60
+      runas: root
